@@ -13,11 +13,9 @@ class BysApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "",
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
+      theme: ThemeData.light(),
+      darkTheme: ThemeData.dark(),
+      themeMode: ThemeMode.system,
       home: const HomePage(),
     );
   }
@@ -41,9 +39,25 @@ class _HomePageState extends State<HomePage> {
           children: [
             Image.network(
               '$bucketUrl/other_images/logo.png',
-              width: 75,
-              height: 75,
+              width: 50,
+              height: 50,
             ),
+            const SizedBox(width: 10),
+            Expanded(
+                child: TextField(
+              decoration: InputDecoration(
+                  hintText: "Search",
+                  hintStyle: const TextStyle(color: Colors.white),
+                  filled: true,
+                  fillColor: Colors.white.withOpacity(0.2),
+                  contentPadding:
+                      const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(10),
+                      borderSide: BorderSide.none)),
+              style: const TextStyle(color: Colors.white),
+              cursorColor: Colors.white,
+            ))
           ],
         ),
         toolbarHeight: 100,
@@ -53,6 +67,28 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[],
         ),
+      ),
+      bottomNavigationBar: Row(
+        children: [
+          Expanded(
+            child: IconButton(
+              icon: const Icon(Icons.home),
+              onPressed: () {},
+            ),
+          ),
+          Expanded(
+            child: IconButton(
+              icon: const Icon(Icons.search),
+              onPressed: () {},
+            ),
+          ),
+          Expanded(
+            child: IconButton(
+              icon: const Icon(Icons.person),
+              onPressed: () {},
+            ),
+          ),
+        ],
       ),
     );
   }
