@@ -1,3 +1,5 @@
+import 'package:app/components/bottom_navigation_bar.dart';
+import 'package:app/service/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -34,62 +36,43 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Row(
-          children: [
-            Image.network(
-              '$bucketUrl/other_images/logo.png',
-              width: 50,
-              height: 50,
-            ),
-            const SizedBox(width: 10),
-            Expanded(
-                child: TextField(
-              decoration: InputDecoration(
-                  hintText: "Search",
-                  hintStyle: const TextStyle(color: Colors.white),
-                  filled: true,
-                  fillColor: Colors.white.withOpacity(0.2),
-                  contentPadding:
-                      const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: BorderSide.none)),
-              style: const TextStyle(color: Colors.white),
-              cursorColor: Colors.white,
-            ))
-          ],
+        appBar: AppBar(
+          title: Row(
+            children: [
+              Image.network(
+                '$bucketUrl/other_images/logo.png',
+                width: 50,
+                height: 50,
+              ),
+              const SizedBox(width: 10),
+              Expanded(
+                  child: TextField(
+                decoration: InputDecoration(
+                    hintText: "Search",
+                    hintStyle: const TextStyle(color: Colors.white),
+                    filled: true,
+                    fillColor: Colors.white.withOpacity(0.2),
+                    contentPadding: const EdgeInsets.symmetric(
+                        vertical: 10, horizontal: 15),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(10),
+                        borderSide: BorderSide.none)),
+                style: const TextStyle(color: Colors.white),
+                cursorColor: Colors.white,
+              ))
+            ],
+          ),
         ),
-        toolbarHeight: 100,
-      ),
-      body: const Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[],
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              ElevatedButton(
+                  onPressed: () => AuthService().cognitoSignIn(),
+                  child: const Text("Sign In"))
+            ],
+          ),
         ),
-      ),
-      bottomNavigationBar: Row(
-        children: [
-          Expanded(
-            child: IconButton(
-              icon: const Icon(Icons.home),
-              onPressed: () {},
-            ),
-          ),
-          Expanded(
-            child: IconButton(
-              icon: const Icon(Icons.search),
-              onPressed: () {},
-            ),
-          ),
-          Expanded(
-            child: IconButton(
-              icon: const Icon(Icons.person),
-              onPressed: () {},
-            ),
-          ),
-        ],
-      ),
-    );
+        bottomNavigationBar: const NavBar());
   }
 }
