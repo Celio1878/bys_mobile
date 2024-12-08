@@ -1,10 +1,10 @@
 import 'package:app/components/bottom_navigation_bar.dart';
-import 'package:app/service/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const BysApp());
 }
 
@@ -67,9 +67,7 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              ElevatedButton(
-                  onPressed: () => AuthService().cognitoSignIn(),
-                  child: const Text("Sign In"))
+              ElevatedButton(onPressed: () => {}, child: const Text("Sign In"))
             ],
           ),
         ),

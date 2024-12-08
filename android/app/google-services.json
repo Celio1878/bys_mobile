@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "577176829025",
+    "project_id": "be-your-stories",
+    "storage_bucket": "be-your-stories.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:577176829025:android:49b75b29a0b90c9bf8be20",
+        "android_client_info": {
+          "package_name": "bys.com.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "577176829025-dg4qiitmol2r1e03lp8gimnfrqh92v5a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDDsBLCFmgC9dRDT6YcWk_JJnEd--G0Ld0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "577176829025-1fk8qtgrpk06rgnad3472rjmmq885ops.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "577176829025-as2cocosifcgbrcriokpks7r6m8av8jo.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "beyourstories.com.br.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

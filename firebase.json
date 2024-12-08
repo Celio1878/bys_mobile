@@ -1,0 +1,22 @@
+{
+	"flutter": {
+		"platforms": {
+			"android": {
+				"default": {
+					"projectId": "be-your-stories",
+					"appId": "1:577176829025:android:49b75b29a0b90c9bf8be20",
+					"fileOutput": "android/app/google-services.json"
+				}
+			},
+			"dart": {
+				"lib/firebase_options.dart": {
+					"projectId": "be-your-stories",
+					"configurations": {
+						"android": "1:577176829025:android:49b75b29a0b90c9bf8be20",
+						"ios": "1:577176829025:ios:cc6ef05c45f1f790f8be20"
+					}
+				}
+			}
+		}
+	}
+}
