@@ -1,10 +1,17 @@
 import 'package:app/components/bottom_navigation_bar.dart';
+import 'package:app/service/auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+import 'firebase_options.dart';
 
 Future<void> main() async {
   await dotenv.load(fileName: ".env");
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const BysApp());
 }
 
@@ -67,7 +74,25 @@ class _HomePageState extends State<HomePage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              ElevatedButton(onPressed: () => {}, child: const Text("Sign In"))
+              FilledButton.tonalIcon(
+                onPressed: () async {
+                  try {
+                    final user = AuthService().login();
+
+                    if (mounted) {
+                      print("User Mounted: $user");
+                    }
+
+                    print("User not mounted: $user");
+                  } catch (e) {
+                    print(
+                      "Error: $e",
+                    );
+                  }
+                },
+                label: const Text("Continue with Google"),
+                icon: const Icon(Icons.login),
+              )
             ],
           ),
         ),

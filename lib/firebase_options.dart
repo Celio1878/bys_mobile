@@ -63,10 +63,9 @@ class DefaultFirebaseOptions {
     messagingSenderId: '577176829025',
     projectId: 'be-your-stories',
     storageBucket: 'be-your-stories.firebasestorage.app',
-    androidClientId:
-        '577176829025-7n7d9ougjkhr4b1bap9i93inqv90ai0k.apps.googleusercontent.com',
-    iosClientId:
-        '577176829025-as2cocosifcgbrcriokpks7r6m8av8jo.apps.googleusercontent.com',
+    androidClientId: '577176829025-7n7d9ougjkhr4b1bap9i93inqv90ai0k.apps.googleusercontent.com',
+    iosClientId: '577176829025-as2cocosifcgbrcriokpks7r6m8av8jo.apps.googleusercontent.com',
     iosBundleId: 'beyourstories.com.br.app',
   );
+
 }

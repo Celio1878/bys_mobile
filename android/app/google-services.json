@@ -14,6 +14,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "577176829025-7n7d9ougjkhr4b1bap9i93inqv90ai0k.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "bys.com.app",
+            "certificate_hash": "483727908603a0db74c3502fa7fd697751f8ffd7"
+          }
+        },
+        {
           "client_id": "577176829025-dg4qiitmol2r1e03lp8gimnfrqh92v5a.apps.googleusercontent.com",
           "client_type": 3
         }
