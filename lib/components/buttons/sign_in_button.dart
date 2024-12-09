@@ -7,17 +7,7 @@ class SignInButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return FilledButton.tonalIcon(
-      onPressed: () async {
-        try {
-          final user = AuthService().login();
-
-          print("User Mounted: $user");
-        } catch (e) {
-          print(
-            "Error: $e",
-          );
-        }
-      },
+      onPressed: () => login(context),
       label: const Text("Login"),
       // Google icon
       icon: Image.asset(

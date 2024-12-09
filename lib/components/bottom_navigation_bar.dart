@@ -1,11 +1,15 @@
-// create a component for navigation bar
+import 'package:app/service/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class NavBar extends StatelessWidget {
-  const NavBar({super.key});
+class BottomNavBar extends StatelessWidget {
+  const BottomNavBar({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final userState = Provider.of<UserState>(context);
+    final user = userState.user;
+
     return SizedBox(
       height: 100,
       child: Row(
@@ -30,7 +34,11 @@ class NavBar extends StatelessWidget {
           ),
           Expanded(
             child: IconButton(
-              icon: const Icon(Icons.person),
+              icon: user != null
+                  ? CircleAvatar(
+                      backgroundImage: NetworkImage(user.photoURL!),
+                    )
+                  : const Icon(Icons.person),
               onPressed: () {},
             ),
           ),

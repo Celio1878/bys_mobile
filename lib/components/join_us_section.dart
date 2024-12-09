@@ -1,12 +1,16 @@
+import 'package:app/components/buttons/sign_in_button.dart';
+import 'package:app/service/auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class JoinUsSection extends StatelessWidget {
-  final bool isUserLoggedIn; // Pass true or false based on session state
-
-  const JoinUsSection({super.key, this.isUserLoggedIn = false});
+  const JoinUsSection({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final userState = Provider.of<UserState>(context);
+    final user = userState.user;
+
     return Container(
       padding: EdgeInsets.symmetric(vertical: 40, horizontal: 16),
       decoration: BoxDecoration(
@@ -22,6 +26,7 @@ class JoinUsSection extends StatelessWidget {
         children: [
           Text(
             'Junte-se à Nossa Comunidade',
+            textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 30,
               fontWeight: FontWeight.bold,
@@ -34,13 +39,8 @@ class JoinUsSection extends StatelessWidget {
             textAlign: TextAlign.center,
             style: TextStyle(fontSize: 16, color: Colors.white),
           ),
-          if (!isUserLoggedIn)
-            ElevatedButton(
-              onPressed: () {
-                // Handle Google Sign-In
-              },
-              child: Text('Login with Google'),
-            ),
+          SizedBox(height: 20),
+          user?.email != null ? Container() : SignInButton()
         ],
       ),
     );
