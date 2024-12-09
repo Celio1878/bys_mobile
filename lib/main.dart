@@ -1,5 +1,11 @@
+import 'package:app/components/animated_section.dart';
 import 'package:app/components/bottom_navigation_bar.dart';
-import 'package:app/service/auth.dart';
+import 'package:app/components/buttons/sign_in_button.dart';
+import 'package:app/components/feature_section.dart';
+import 'package:app/components/hero_section.dart';
+import 'package:app/components/join_us_section.dart';
+import 'package:app/components/logo.dart';
+import 'package:app/components/security_section.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
@@ -44,58 +50,26 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Row(
-            children: [
-              Image.network(
-                '$bucketUrl/other_images/logo.png',
-                width: 50,
-                height: 50,
-              ),
-              const SizedBox(width: 10),
-              Expanded(
-                  child: TextField(
-                decoration: InputDecoration(
-                    hintText: "Search",
-                    hintStyle: const TextStyle(color: Colors.white),
-                    filled: true,
-                    fillColor: Colors.white.withOpacity(0.2),
-                    contentPadding: const EdgeInsets.symmetric(
-                        vertical: 10, horizontal: 15),
-                    border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                        borderSide: BorderSide.none)),
-                style: const TextStyle(color: Colors.white),
-                cursorColor: Colors.white,
-              ))
-            ],
-          ),
+          title: Logo(),
+          actions: [SignInButton()],
+          toolbarHeight: 75,
         ),
-        body: Center(
+        body: SingleChildScrollView(
+            child: Padding(
+          padding: const EdgeInsets.all(16),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              FilledButton.tonalIcon(
-                onPressed: () async {
-                  try {
-                    final user = AuthService().login();
-
-                    if (mounted) {
-                      print("User Mounted: $user");
-                    }
-
-                    print("User not mounted: $user");
-                  } catch (e) {
-                    print(
-                      "Error: $e",
-                    );
-                  }
-                },
-                label: const Text("Continue with Google"),
-                icon: const Icon(Icons.login),
-              )
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              HeroSection(),
+              SizedBox(height: 16),
+              AnimatedSection(child: FeaturesSection()),
+              SizedBox(height: 16),
+              AnimatedSection(child: SecuritySection()),
+              SizedBox(height: 16),
+              AnimatedSection(child: JoinUsSection()),
             ],
           ),
-        ),
+        )),
         bottomNavigationBar: const NavBar());
   }
 }
