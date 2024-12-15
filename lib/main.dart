@@ -1,4 +1,5 @@
-import 'package:app/components/home_page.dart';
+import 'package:app/pages/home_page.dart';
+import 'package:app/pages/profile_page.dart';
 import 'package:app/service/auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -29,7 +30,11 @@ class BysApp extends StatelessWidget {
       theme: ThemeData.light(),
       darkTheme: ThemeData.dark(),
       themeMode: ThemeMode.system,
-      home: const HomePage(),
+      initialRoute: "/",
+      routes: {
+        "/": (context) => const HomePage(),
+        "/profile": (context) => const ProfilePage(),
+      },
     );
   }
 }

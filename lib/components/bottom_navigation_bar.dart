@@ -10,6 +10,8 @@ class BottomNavBar extends StatelessWidget {
     final userState = Provider.of<UserState>(context);
     final user = userState.user;
 
+    var currentRoute = ModalRoute.of(context)!.settings.name;
+
     return SizedBox(
       height: 100,
       child: Row(
@@ -17,7 +19,13 @@ class BottomNavBar extends StatelessWidget {
           Expanded(
             child: IconButton(
               icon: const Icon(Icons.home),
-              onPressed: () {},
+              onPressed: () {
+                if (currentRoute != "/") {
+                  Navigator.of(context).pushReplacementNamed(
+                    "/",
+                  );
+                }
+              },
             ),
           ),
           Expanded(
@@ -39,7 +47,11 @@ class BottomNavBar extends StatelessWidget {
                       backgroundImage: NetworkImage(user.photoURL!),
                     )
                   : const Icon(Icons.person),
-              onPressed: () {},
+              onPressed: () {
+                if (user != null && currentRoute != "/profile") {
+                  Navigator.of(context).pushReplacementNamed("/profile");
+                }
+              },
             ),
           ),
         ],

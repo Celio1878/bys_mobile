@@ -25,7 +25,7 @@ Future<void> login(BuildContext context) async {
   try {
     // Use cascading operator and null check optimization
     final googleAccount =
-        await GoogleSignIn().signIn().timeout(const Duration(seconds: 30));
+        await GoogleSignIn().signIn().timeout(const Duration(seconds: 120));
     if (googleAccount == null) {
       throw Exception('Google Sign In failed');
     }
